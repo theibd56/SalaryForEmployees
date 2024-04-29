@@ -14,9 +14,19 @@ const EmployeesList = ({data, onDelete, onToggleProp}) => {
         )
     })
 
+    const noElementsText = 'ERROR: No employees were found according to the specified criteria, please check the entered data'
+
+    const noElements = () => {
+        return (
+            <li className='list-group-item' style={{textAlign: 'center'}}>
+                <span className="list-group-item-label">{noElementsText}</span>
+            </li>
+        )
+    }
+
     return (
         <ul className="app-list list-group">
-            {elements}
+            {elements.length !== 0 ? elements : noElements()}
         </ul>
     )
 }

@@ -19,6 +19,7 @@
     font-size: 20px;
     text-align: center;
     border: 0;
+    outline: none;
 }
 
 .list-group-item button {

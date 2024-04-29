@@ -16,11 +16,14 @@ class App extends Component {
                 {id: 1, name: 'Alex C.', salary: 800, increase: true, rise: false},
                 {id: 2, name: 'Corney J.', salary: 1600, increase: false, rise: true},
                 {id: 3, name: 'Mike F.', salary: 2500, increase: false, rise: false},
+                {id: 4, name: 'Shami R.', salary: 900, increase: false, rise: true},
+                {id: 5, name: 'Ingvarr B.', salary: 3700, increase: true, rise: true},
+                {id: 6, name: 'Raul F.', salary: 1420, increase: false, rise: true}
             ],
             term: '',
             filter: 'all'
         }
-        this.maxId = 4;
+        this.maxId = 7;
     }
 
     deleteEmployees = (id) => {
@@ -74,7 +77,7 @@ class App extends Component {
             case 'small-salary':
                 return items.filter(item => item.salary <= 1000)
             case 'big-salary':
-                return items.filter(item => item.salary > 3000)
+                    return items.filter(item => item.salary > 3000)
             default:
                 return items
         }
@@ -88,11 +91,12 @@ class App extends Component {
         const {data, term, filter} = this.state;
         const employees = this.state.data.length;
         const increasedEmployees = this.state.data.filter(item => item.increase).length;
+        const risedEmployees = this.state.data.filter(item => item.rise).length
         const visibleData = this.onFilter(this.searchEmployees(data, term), filter);
 
         return (
             <div className="app">
-                <AppInfo employees={employees} increasedEmployees={increasedEmployees}/>
+                <AppInfo employees={employees} increasedEmployees={increasedEmployees} risedEmployees={risedEmployees}/>
     
                 <div className="search-panel">
                     <SearchPanel onUpdateSearch={this.onUpdateSearch}/>
